@@ -13,7 +13,12 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-
+function callBinding(magicAnimals, updateAnimal, id){
+  return function updateAnimal('Trogdor'){
+    return magicAnimals[id];
+  }
+  }
+}
 
 
 // *************

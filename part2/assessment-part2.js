@@ -37,15 +37,25 @@
 var firstUser = 'don\'t touch this string!';
 var thirdUser = 'don\'t touch this string, either!';
 
-function noWeakLink() {
+// function noWeakLink() {
 
-  return $http({
-    method: 'GET',
-    url: '/api/users'
-  })
-  // CODE HERE...
+  // return $http({
+  //   method: 'GET',
+  //   url: '/api/users'
+  // })
+  // // CODE HERE...
+  //   noWeakLink().then(function(res) {
+  //     return firstUser = response
+  //
+  //   noWeakLink().then(function(res){
+  //     return user[9] = response
+  //   })
+  //
+  //   }
+  // }
 
-}
+
+
 
 
 
@@ -74,6 +84,8 @@ function large() {
   return 'My name is ' + this.name + ' and I am very heavy!'
 }
 // CODE HERE...
+var boundToElephant = large.bind(elephant);
+
 
 
 
@@ -88,7 +100,10 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
+function deathStar(capacity, crew){
+   return capacity.bind(crew)
 
+}
 
 
 // *************
@@ -103,7 +118,11 @@ function large() {
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
-
+function accountingOffice(assets){
+  return function(liabilities){
+    return assets + liabilities;
+  }
+}
 
 
 // *************
@@ -128,7 +147,17 @@ function large() {
 // };
 
 // CODE HERE...
-
+function forgetter(name){
+  var arr = [];
+  var named = name;
+  return function rememberall(item){
+    arr.push(item);
+    return {
+      name: named,
+      remember: arr
+    }
+  }
+}
 
 
 // *************
@@ -156,3 +185,36 @@ function large() {
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+
+function frodo(num1, num2){
+  var startingHungerValue = num1;
+  var startingDangerValue = num2;
+  return {
+    dinnerOverFire: function(){
+      if(startingHungerValue < 100 && startingDangerValue < 100 && startingHungerValue > 0 && startingDangerValue > 0 ){
+      startingHungerValue = startingHungerValue - 25;
+      startingDangerValue = startingDangerValue + 40;
+    } else if(startingHungerValue > 100 && startingDangerValue > 100 && startingHungerValue < 0 && startingDangerValue < 0){
+      startingDangerValue = 0;
+      startingHungerValue = 0;
+      }
+      return {
+        hunger: startingHungerValue,
+        danger: startingDangerValue
+      }
+    },
+    hidingInBush: function(){
+      if(startingHungerValue < 100 && startingDangerValue < 100 && startingHungerValue > 0 && startingDangerValue > 0){
+      startingHungerValue = startingHungerValue + 35;
+      startingDangerValue = startingDangerValue - 20;
+    } else if(startingHungerValue > 100 && startingDangerValue > 100 && startingHungerValue < 0 && startingDangerValue < 0){
+      startingDangerValue = 0;
+      startingHungerValue = 0;
+      }
+      return {
+        hunger: startingHungerValue,
+        danger: startingDangerValue
+      }
+    }
+  }
+}
